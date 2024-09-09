@@ -3,7 +3,10 @@ package com.poo.escola.entities;
 import java.util.Date;
 
 public abstract class Person {
+    public static int countRegistration = 1001;
+
     //Atributos da classe pai
+
     private int registration;
     private String cpf;
     private String name;
@@ -17,7 +20,8 @@ public abstract class Person {
                   Date birthDate, Adress adress, String telephone,
                   String mail, String password) {
 
-        this.registration = registration;
+        this.registration = countRegistration;
+        countRegistration++;
         this.cpf = cpf;
         this.name = name;
         this.birthDate = birthDate;
@@ -27,12 +31,13 @@ public abstract class Person {
         this.password = password;
     }
 
-    public int getRegistration() {
-        return registration;
+    public Person(){
+        this.registration = countRegistration;
+        countRegistration ++;
     }
 
-    public void setRegistration(int registration) {
-        this.registration = registration;
+    public int getRegistration() {
+        return registration;
     }
 
     public String getCpf() {
@@ -40,7 +45,11 @@ public abstract class Person {
     }
 
     public void setCpf(String cpf) {
-        this.cpf = cpf;
+        if(cpf == null || cpf.isEmpty() || !isValidCpf(cpf)){
+            System.out.println("Invalid cpf number!");
+        }else {
+            this.cpf = cpf;
+        }
     }
 
     public String getName() {
@@ -80,7 +89,11 @@ public abstract class Person {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        if (password == null || password.isEmpty() || !isValidPassword(password)){
+            System.out.println("Invalid password.");
+        }else {
+            this.password = password;
+        }
     }
 
     public Adress getAdress() {
@@ -89,5 +102,21 @@ public abstract class Person {
 
     public void setAdress(Adress adress) {
         this.adress = adress;
+    }
+
+    private boolean isValidCpf(String cpf){
+        if(cpf.length() != 11){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    private boolean isValidPassword(String password){
+        if (password.length() < 8){
+            return false;
+        }else {
+            return true;
+        }
     }
 }
