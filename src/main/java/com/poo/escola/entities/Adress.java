@@ -5,11 +5,11 @@ public class Adress {
     private int number;
     private String complement;
     private String city;
-    private String state;
+    private FederalUnit state;
     private String zipCode;
 
     public Adress(String publicPlace, int number, String complement,
-                  String city, String state, String zipCode) {
+                  String city, FederalUnit state, String zipCode) {
         this.publicPlace = publicPlace;
         this.number = number;
         this.complement = complement;
@@ -50,11 +50,11 @@ public class Adress {
         this.city = city;
     }
 
-    public String getState() {
+    public FederalUnit getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(FederalUnit state) {
         this.state = state;
     }
 
@@ -73,7 +73,7 @@ public class Adress {
                 ", Number=" + number +
                 ", Complement='" + complement + '\'' +
                 ", City='" + city + '\'' +
-                ", State='" + state + '\'' +
+                ", State='" + state.getNameInFull() + '\'' +
                 ", Zip Code='" + zipCode + '\'' +
                 '}';
     }

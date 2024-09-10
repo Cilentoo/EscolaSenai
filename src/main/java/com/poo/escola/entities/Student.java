@@ -5,17 +5,18 @@ import java.util.Date;
 public class Student extends Person{
     private Date dataRegistration;
     private String course;
-    private Notes notes;
+    private Situation situation;
 
 
     public Student(int registration, String cpf, String name, Date birthDate, Adress adress,
                    String telephone, String mail,
-                   String password, String course, Date dataRegistration, Notes notes) {
+                   String password, String course, Date dataRegistration,
+                   Situation situation) {
 
         super(registration, cpf, name, birthDate, adress, telephone, mail, password);
         this.course = course;
         this.dataRegistration = dataRegistration;
-        this.notes = notes;
+        this.situation = situation;
     }
 
     public Date getDataRegistration() {
@@ -34,11 +35,21 @@ public class Student extends Person{
         this.course = course;
     }
 
-    public Notes getNotes() {
-        return notes;
+    public Situation getSituation() {
+        return situation;
     }
 
-    public void setNotes(Notes notes) {
-        this.notes = notes;
+    public void setSituation(Situation situation) {
+        this.situation = situation;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "dataRegistration=" + dataRegistration +
+                ", course='" + course + '\'' +
+                ", situation=" + situation.getStts() +
+                '}';
+    }
+
 }

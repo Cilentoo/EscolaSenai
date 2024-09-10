@@ -119,4 +119,18 @@ public abstract class Person {
             return true;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "registration=" + registration +
+                ", cpf='" + cpf + '\'' +
+                ", name='" + name + '\'' +
+                ", birthDate=" + birthDate +
+                ", adress=" + adress +
+                ", telephone='" + telephone + '\'' +
+                ", mail='" + mail + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
