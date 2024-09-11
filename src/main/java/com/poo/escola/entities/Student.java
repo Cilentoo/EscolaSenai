@@ -1,5 +1,7 @@
 package com.poo.escola.entities;
 
+import com.poo.escola.entities.controller.Bill;
+import com.poo.escola.entities.controller.Login;
 import com.poo.escola.entities.enums.Situation;
 
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class Student extends Person{
+public class Student extends Person implements Login, Bill {
     private Date dataRegistration;
     private String course;
     private Situation situation;
@@ -108,5 +110,23 @@ public class Student extends Person{
         }else {
             System.out.println("There are no registered students. \n");
         }
+    }
+
+    @Override
+    public boolean acessAllowed(String mail, String password) {
+        if (mail.equals(getMail()) && password.equals(getPassword())){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public void printBill(Student student, Notes notes, Situation situation,
+                          Discipline discipline) {
+        System.out.println("Student: " + student.getName());
+        System.out.println("Notes: " + notes.getNotes());
+        System.out.println("Situation: " + situation.getStts());
+        System.out.println("Discipline: " + discipline.getDisciplineName());
     }
 }
