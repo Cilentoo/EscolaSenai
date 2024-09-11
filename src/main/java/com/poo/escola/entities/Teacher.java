@@ -27,14 +27,55 @@ public class Teacher extends Person {
         this.salary = salary;
     }
 
-    public static void registerStudent(){
-        System.out.println(" -- Registering new student -- ");
+    public static void registerTeacher(){
+        System.out.println(" -- Registering new teacher -- ");
         System.out.println("Name: ");
         Scanner sc = new Scanner(System.in);
         String name = sc.nextLine();
-        Student student = new Student();
-        student.setName(name);
-        Student.studentsList.add(student);
+        Teacher teacher= new Teacher();
+        teacher.setName(name);
+        Teacher.teachersList.add(teacher);
+    }
+
+    public static void updateTeacher(){
+        if (!Teacher.teachersList.isEmpty()) {
+
+            System.out.println("Teacher list: ");
+            showTeacherList();
+            System.out.println("Enter number of the teacher to update: ");
+            Scanner sc = new Scanner(System.in);
+            int teacherIndex = sc.nextInt() - 1;
+            if (teacherIndex >= 0 && teacherIndex < Teacher.teachersList.size()) {
+                Teacher teacherToUpdate = Teacher.teachersList.get(teacherIndex);
+                System.out.println("Enter new name: ");
+                sc.nextLine();
+                String newName = sc.nextLine();
+                teacherToUpdate.setName(newName);
+                System.out.println("Teacher updated succesfully. \n");
+            } else {
+                System.out.println("Invalid Teacher number. \n");
+            }
+        }else {
+            System.out.println("There are no registered teachers.");
+        }
+    }
+    public static void removeTeacher(){
+        if (!Teacher.teachersList.isEmpty()) {
+
+            System.out.println("Teachers list: ");
+            showTeacherList();
+            System.out.println("Enter number of the teacher to remove: ");
+            Scanner sc = new Scanner(System.in);
+            int teacherIndex = sc.nextInt() - 1;
+            if (teacherIndex >= 0 && teacherIndex < Teacher.teachersList.size()) {
+                Student.studentsList.remove(teacherIndex);
+                System.out.println("Teacher removed succesfully. \n");
+            } else {
+                System.out.println("Invalid teacher number. \n");
+            }
+        }else {
+            System.out.println("There are no registered teachers.");
+        }
     }
 
     public static void showTeacherList(){

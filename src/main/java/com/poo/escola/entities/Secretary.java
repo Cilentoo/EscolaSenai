@@ -58,10 +58,10 @@ public class Secretary extends Person implements Login {
         do{
             System.out.println("\n- MENU -");
             System.out.println("What do you want to do?");
-            System.out.println("1- Register new student");
-            System.out.println("2- Update student");
-            System.out.println("3- Delete student");
-            System.out.println("4- List student");
+            System.out.println("1- Register new teacher");
+            System.out.println("2- Update teacher");
+            System.out.println("3- Delete teacher");
+            System.out.println("4- List teacher");
             System.out.println("0- Exit\n");
             System.out.print("Digit an option: ");
             Scanner sc = new Scanner(System.in);
@@ -69,16 +69,16 @@ public class Secretary extends Person implements Login {
             System.out.println("\n");
             switch(optionT){
                 case 1:
-                    Student.registerStudent();
+                    Teacher.registerTeacher();
                     break;
                 case 2:
-                    Student.updateStudent();
+                    Teacher.updateTeacher();
                     break;
                 case 3:
-                    Student.removeStudent();
+                    Teacher.removeTeacher();
                     break;
                 case 4:
-                    Student.showStudentList();
+                    Teacher.showTeacherList();
                     break;
                 case 0:
                     System.out.println("Leaving...");
