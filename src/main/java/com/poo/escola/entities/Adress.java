@@ -1,5 +1,7 @@
 package com.poo.escola.entities;
 
+import com.poo.escola.entities.enums.FederalUnit;
+
 public class Adress {
     private String publicPlace;
     private int number;

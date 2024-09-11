@@ -1,4 +1,4 @@
-package com.poo.escola.entities;
+package com.poo.escola.entities.enums;
 
 public enum FederalUnit {
     RJ("Rio de Janeiro"),

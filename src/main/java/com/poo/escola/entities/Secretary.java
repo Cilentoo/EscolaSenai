@@ -1,8 +1,10 @@
 package com.poo.escola.entities;
 
+import com.poo.escola.entities.controller.Login;
+
 import java.util.Scanner;
 
-public class Secretary extends Person implements Login{
+public class Secretary extends Person implements Login {
     @Override
     public boolean acessAllowed(String mail, String password) {
         if (mail.equals(getMail()) && password.equals(getPassword())){

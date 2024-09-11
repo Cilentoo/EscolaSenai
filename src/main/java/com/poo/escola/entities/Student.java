@@ -1,5 +1,7 @@
 package com.poo.escola.entities;
 
+import com.poo.escola.entities.enums.Situation;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
