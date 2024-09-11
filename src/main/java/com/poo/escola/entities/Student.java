@@ -67,6 +67,7 @@ public class Student extends Person{
             if (studentIndex >= 0 && studentIndex < Student.studentsList.size()) {
                 Student studentToUpdate = Student.studentsList.get(studentIndex);
                 System.out.println("Enter new name: ");
+                sc.nextLine();
                 String newName = sc.nextLine();
                 studentToUpdate.setName(newName);
                 System.out.println("Student updated succesfully. \n");
