@@ -88,7 +88,7 @@ public class Student extends Person{
             System.out.println("Enter number of the student to remove: ");
             Scanner sc = new Scanner(System.in);
             int studentIndex = sc.nextInt() - 1;
-            if (studentIndex >= 0 && studentIndex <= Student.studentsList.size()) {
+            if (studentIndex >= 0 && studentIndex < Student.studentsList.size()) {
                 Student.studentsList.remove(studentIndex);
                 System.out.println("Student removed succesfully. \n");
             } else {
