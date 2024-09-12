@@ -2,6 +2,7 @@ package com.poo.escola.entities;
 
 import com.poo.escola.entities.controller.Login;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Secretary extends Person implements Login {
@@ -15,7 +16,7 @@ public class Secretary extends Person implements Login {
     }
 
     public static void secretaryMenuStudent(){
-        int optionS;
+        int optionS = 8;
 
         do{
             System.out.println("\n- MENU -");
@@ -27,33 +28,38 @@ public class Secretary extends Person implements Login {
             System.out.println("0- Exit\n");
             System.out.print("Digit an option: ");
             Scanner sc = new Scanner(System.in);
-            optionS = sc.nextInt();
-            System.out.println("\n");
-            switch(optionS){
-                case 1:
-                    Student.registerStudent();
-                    break;
-                case 2:
-                    Student.updateStudent();
-                    break;
-                case 3:
-                    Student.removeStudent();
-                    break;
-                case 4:
-                    Student.showStudentList();
-                    break;
-                case 0:
-                    System.out.println("Leaving...");
-                    break;
-                default:
-                    System.out.println("Invalid option.");
-                    break;
+            try {
+
+                optionS = sc.nextInt();
+                System.out.println("\n");
+                switch (optionS) {
+                    case 1:
+                        Student.registerStudent();
+                        break;
+                    case 2:
+                        Student.updateStudent();
+                        break;
+                    case 3:
+                        Student.removeStudent();
+                        break;
+                    case 4:
+                        Student.showStudentList();
+                        break;
+                    case 0:
+                        System.out.println("Leaving...");
+                        break;
+                    default:
+                        System.out.println("Invalid option.");
+                        break;
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Please send an integer number!");
             }
         }while(optionS != 0);
     }
 
     public static void secretaryMenuTeacher(){
-        int optionT;
+        int optionT = 8;
 
         do{
             System.out.println("\n- MENU -");
@@ -65,27 +71,31 @@ public class Secretary extends Person implements Login {
             System.out.println("0- Exit\n");
             System.out.print("Digit an option: ");
             Scanner sc = new Scanner(System.in);
-            optionT = sc.nextInt();
-            System.out.println("\n");
-            switch(optionT){
-                case 1:
-                    Teacher.registerTeacher();
-                    break;
-                case 2:
-                    Teacher.updateTeacher();
-                    break;
-                case 3:
-                    Teacher.removeTeacher();
-                    break;
-                case 4:
-                    Teacher.showTeacherList();
-                    break;
-                case 0:
-                    System.out.println("Leaving...");
-                    break;
-                default:
-                    System.out.println("Invalid option.");
-                    break;
+            try {
+                optionT = sc.nextInt();
+                System.out.println("\n");
+                switch (optionT) {
+                    case 1:
+                        Teacher.registerTeacher();
+                        break;
+                    case 2:
+                        Teacher.updateTeacher();
+                        break;
+                    case 3:
+                        Teacher.removeTeacher();
+                        break;
+                    case 4:
+                        Teacher.showTeacherList();
+                        break;
+                    case 0:
+                        System.out.println("Leaving...");
+                        break;
+                    default:
+                        System.out.println("Invalid option.");
+                        break;
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Please send an integer number!");
             }
         }while(optionT != 0);
     }

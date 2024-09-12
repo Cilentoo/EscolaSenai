@@ -4,6 +4,7 @@ import com.poo.escola.entities.controller.Bill;
 import com.poo.escola.entities.controller.Login;
 import com.poo.escola.entities.enums.Situation;
 
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -85,11 +86,12 @@ public class Teacher extends Person implements Login, Bill {
     public static void showTeacherList(){
         if(!Teacher.teachersList.isEmpty()){
             System.out.println("Teacher list: ");
-            for (int i = 0; i< Teacher.teachersList.size(); i++){
-                System.out.println((i+1) + "- " + Teacher.teachersList.get(i).getName());
+            for (Teacher t : teachersList){
+                System.out.println((teachersList.indexOf(t))+ "- " + t.getName() + t.getSalary() +
+                        t.getMail() + t.getAdmissionDate());
             }
         }else {
-            System.out.println("There are no registered customers. \n");
+            System.out.println("There are no registered teacher. \n");
         }
     }
 
@@ -113,5 +115,35 @@ public class Teacher extends Person implements Login, Bill {
         System.out.println("Situation: " + situation.getStts());
         System.out.println("Discipline: " + discipline.getDisciplineName());
 
+    }
+
+    public static void seedTeacher(){
+        Teacher teacher1 = new Teacher();
+        teacher1.setName("Arthur");
+        teacher1.setSalary(3200.00);
+        teacher1.setMail("arthurG@gmail.com");
+        teacher1.setAdmissionDate(new Date());
+        teachersList.add(teacher1);
+
+        Teacher teacher2 = new Teacher();
+        teacher2.setName("Pedro");
+        teacher2.setSalary(3200.00);
+        teacher2.setMail("pedroG@gmail.com");
+        teacher2.setAdmissionDate(new Date());
+        teachersList.add(teacher2);
+
+        Teacher teacher3 = new Teacher();
+        teacher3.setName("Lucas");
+        teacher3.setSalary(3200.00);
+        teacher3.setMail("LucasG@gmail.com");
+        teacher3.setAdmissionDate(new Date());
+        teachersList.add(teacher2);
+
+        Teacher teacher4 = new Teacher();
+        teacher4.setName("Mario");
+        teacher4.setSalary(3200.00);
+        teacher4.setMail("marioG@gmail.com");
+        teacher4.setAdmissionDate(new Date());
+        teachersList.add(teacher4);
     }
 }
