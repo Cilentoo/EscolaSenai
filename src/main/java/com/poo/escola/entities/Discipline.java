@@ -34,4 +34,13 @@ public class Discipline {
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
+
+    @Override
+    public String toString() {
+        return "Discipline{" +
+                "disciplineName='" + disciplineName + '\'' +
+                ", notes=" + notes +
+                ", teacher=" + teacher +
+                '}';
+    }
 }

@@ -1,9 +1,14 @@
 package com.poo.escola.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Notes {
     private int Notes;
     private Student student;
     private Discipline discipline;
+
+
 
     public Notes(int notes, Student student, Discipline discipline) {
         Notes = notes;

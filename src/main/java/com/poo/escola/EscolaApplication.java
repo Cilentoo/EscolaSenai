@@ -9,6 +9,7 @@ public class EscolaApplication {
 
 	public static void main(String[] args)  {
 		SpringApplication.run(EscolaApplication.class, args);
+		Secretary.seedSecretary();
 		Student.seedStudent();
 		Teacher.seedTeacher();
 		Menu.menuFinal();

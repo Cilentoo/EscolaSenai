@@ -1,19 +1,13 @@
 package com.poo.escola.entities;
 
-import com.poo.escola.entities.controller.Login;
+import java.util.*;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+public class Secretary extends Person  {
+    private String mail;
+    private String password;
 
-public class Secretary extends Person implements Login {
-    @Override
-    public boolean acessAllowed(String mail, String password) {
-        if (mail.equals(getMail()) && password.equals(getPassword())){
-            return true;
-        }else {
-            return false;
-        }
-    }
+    public static List<Secretary> secretary = new ArrayList<Secretary>();
+
 
     public static void secretaryMenuStudent(){
         int optionS = 8;
@@ -98,5 +92,17 @@ public class Secretary extends Person implements Login {
                 System.out.println("Please send an integer number!");
             }
         }while(optionT != 0);
+    }
+
+    public static void seedSecretary(){
+        Secretary secretary1 = new Secretary();
+        secretary1.setMail("sc@gmail.com");
+        secretary1.setPassword("Sc@!1973");
+        secretary.add(secretary1);
+
+    }
+
+    public static List<Secretary> getSecretary(){
+        return secretary;
     }
 }
