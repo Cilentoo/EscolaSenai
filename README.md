@@ -12,7 +12,7 @@ new subjects to the code based on what was taught, the objective is to absorb th
 Students registered in the system, teachers, grades and subjects, based on business rules to implement exceptions and inheritance, in addition to permissions.
 
 ##Modelos de Dominio em atualização (Domain model updating)
-![Modelo UML Diagram]https://github.com/Cilentoo/EscolaSenai/blob/main/assets/ClassesEscolaSenai.png
+![Modelo UML Diagram](https://github.com/Cilentoo/EscolaSenai/blob/main/assets/ClassesEscolaSenai.png)
 
 # Tecnologias utilizadas (Technologies used)
 ## Back end
