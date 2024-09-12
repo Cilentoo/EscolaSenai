@@ -4,7 +4,6 @@ import com.poo.escola.entities.controller.Bill;
 import com.poo.escola.entities.controller.Login;
 import com.poo.escola.entities.enums.Situation;
 
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -87,8 +86,10 @@ public class Teacher extends Person implements Login, Bill {
         if(!Teacher.teachersList.isEmpty()){
             System.out.println("Teacher list: ");
             for (Teacher t : teachersList){
-                System.out.println((teachersList.indexOf(t))+ "- " + t.getName() + t.getSalary() +
-                        t.getMail() + t.getAdmissionDate());
+                System.out.println((teachersList.indexOf(t))+ "- " + t.getName() + " / salary: "  +
+                        t.getSalary()
+                        + "/ email: " + t.getMail() + " / admission date: "
+                        + t.getAdmissionDate());
             }
         }else {
             System.out.println("There are no registered teacher. \n");

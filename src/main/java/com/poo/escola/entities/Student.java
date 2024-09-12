@@ -104,8 +104,10 @@ public class Student extends Person implements Login, Bill {
     public static void showStudentList(){
         if(!Student.studentsList.isEmpty()){
             System.out.println("Student list: ");
-            for (int i = 0; i< Student.studentsList.size(); i++){
-                System.out.println((i+1) + "- " + Student.studentsList.get(i).getName());
+            for (Student s : studentsList){
+                System.out.println((studentsList.indexOf(s))+ "- " + s.getName() + " / data registration: " +
+                        s.getDataRegistration() + " / email: " + s.getMail() + " / course: "
+                        + s.getCourse());
             }
         }else {
             System.out.println("There are no registered students. \n");
@@ -128,5 +130,29 @@ public class Student extends Person implements Login, Bill {
         System.out.println("Notes: " + notes.getNotes());
         System.out.println("Situation: " + situation.getStts());
         System.out.println("Discipline: " + discipline.getDisciplineName());
+    }
+
+    public static void seedStudent(){
+        Student student1 = new Student();
+        student1.setName("Luan");
+        student1.setDataRegistration(new Date());
+        student1.setMail("luanG@gmail.com");
+        student1.setCourse("Desenvolvimento de Software");
+        studentsList.add(student1);
+
+        Student student2 = new Student();
+        student2.setName("Carlos");
+        student2.setDataRegistration(new Date());
+        student2.setMail("carlosS@gmail.com");
+        student2.setCourse("Desenvolvimento de Software");
+        studentsList.add(student2);
+
+        Student student3 = new Student();
+        student3.setName("Marcos");
+        student3.setDataRegistration(new Date());
+        student3.setMail("marcosS@gmail.com");
+        student3.setCourse("Desenvolvimento de Software");
+        studentsList.add(student3);
+
     }
 }
