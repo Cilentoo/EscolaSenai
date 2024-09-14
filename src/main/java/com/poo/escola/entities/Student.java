@@ -11,8 +11,17 @@ import java.util.Scanner;
 public class Student extends Person{
     private Date dataRegistration;
     private String course;
-    private Notes notes;
     private static Situation situation;
+
+    private List<Notes> notesList = new ArrayList<>();
+
+    public List<Notes> getNotesList() {
+        return notesList;
+    }
+
+    public void addNote(Notes note) {
+        this.notesList.add(note);
+    }
 
     public static List<Student> studentsList = new ArrayList<Student>();
 
@@ -40,13 +49,6 @@ public class Student extends Person{
         this.situation = situation;
     }
 
-    public Notes getNotes() {
-        return notes;
-    }
-
-    public void setNotes(Notes notes) {
-        this.notes = notes;
-    }
 
     @Override
     public String toString() {
@@ -136,6 +138,7 @@ public class Student extends Person{
         student2.setDataRegistration(new Date());
         student2.setMail("carlosS@gmail.com");
         student2.setCourse("Desenvolvimento de Software");
+        student2.setPassword("carl!1984@");
         studentsList.add(student2);
 
         Student student3 = new Student();
@@ -143,6 +146,7 @@ public class Student extends Person{
         student3.setDataRegistration(new Date());
         student3.setMail("marcosS@gmail.com");
         student3.setCourse("Desenvolvimento de Software");
+        student3.setPassword("mark!1984@");
         studentsList.add(student3);
 
     }

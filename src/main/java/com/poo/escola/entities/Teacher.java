@@ -103,6 +103,7 @@ public class Teacher extends Person {
         teacher1.setSalary(3200.00);
         teacher1.setMail("arthurG@gmail.com");
         teacher1.setAdmissionDate(new Date());
+        teacher1.setPassword("MA@!1999");
         teachersList.add(teacher1);
 
         Teacher teacher2 = new Teacher();
@@ -119,13 +120,16 @@ public class Teacher extends Person {
         teacher3.setSalary(3200.00);
         teacher3.setMail("LucasG@gmail.com");
         teacher3.setAdmissionDate(new Date());
-        teachersList.add(teacher2);
+        teacher3.setPassword("LU@!1999");
+
+        teachersList.add(teacher3);
 
         Teacher teacher4 = new Teacher();
         teacher4.setName("Mario");
         teacher4.setSalary(3200.00);
         teacher4.setMail("marioG@gmail.com");
         teacher4.setAdmissionDate(new Date());
+        teacher4.setPassword("MA@!1999");
         teachersList.add(teacher4);
     }
 
@@ -140,13 +144,13 @@ public class Teacher extends Person {
             System.out.println("Okay, for now enter number of discipline you want to take notes: ");
             int disciplineIndex = sc.nextInt() - 1;
             if (disciplineIndex >= 0 && disciplineIndex <= Discipline.getDisciplineList().size()) {
-                Notes note1 = new Notes();
+                Notes note = new Notes();
                 System.out.println("Qual nota do aluno: ");
                 Double takeNote1 = sc.nextDouble();
-                note1.setNote(takeNote1);
-                note1.setStudent(Student.getStudentsList().get(studentIndex));
-                note1.setDiscipline(Discipline.getDisciplineList().get(disciplineIndex));
-                Notes.notesList.add(note1);
+                note.setNote(takeNote1);
+                note.setStudent(Student.getStudentsList().get(studentIndex));
+                note.setDiscipline(Discipline.getDisciplineList().get(disciplineIndex));
+                Notes.notesList.add(note);
                 Notes.saveNotesToFile();
             }
 

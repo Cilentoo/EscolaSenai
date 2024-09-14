@@ -5,7 +5,16 @@ import java.util.List;
 
 public class Discipline {
     private String disciplineName;
-    private Notes notes;
+
+    private List<Notes> notesList = new ArrayList<>();
+
+    public List<Notes> getNotesList() {
+        return notesList;
+    }
+
+    public void addNote(Notes note) {
+        this.notesList.add(note);
+    }
 
     public static List<Discipline> disciplineList = new ArrayList<Discipline>();
 
@@ -25,14 +34,6 @@ public class Discipline {
 
     public void setDisciplineName(String disciplineName) {
         this.disciplineName = disciplineName;
-    }
-
-    public Notes getNotes() {
-        return notes;
-    }
-
-    public void setNotes(Notes notes) {
-        this.notes = notes;
     }
 
 

@@ -16,6 +16,7 @@ public class Menu {
 
     public static void printRecord(String loggedUser) {
         Student student = getStudentByEmail(loggedUser);
+
         if (student != null){
             System.out.println("Student Record: ");
             System.out.println("Name: " + student.getName());
@@ -24,22 +25,22 @@ public class Menu {
             Notes.loadNotesFromFile();
 
             List<Notes> studentNotes = new ArrayList<>();
-            for(Notes notes : Notes.getNotesList()){
-                if (notes.getStudent().equals(student)){
-                    studentNotes.add(notes);
+            for(Notes note : Notes.getNotesList()){
+                if (note.getStudent().equals(student)){
+                    studentNotes.add(note);
                 }
             }
-            Notes notes1 = student.getNotes();
+
             if (!studentNotes.isEmpty()){
 
                 for (Notes note : studentNotes){
-                    if (notes1.getNote() >= 6 ){
+                    if (note.getNote() >= 6 ){
                         situation= Situation.APPROVED;
                         break;
-                    }else if (notes1.getNote() < 3){
+                    }else if (note.getNote() < 3){
                         situation = Situation.FAILED;
                         break;
-                    }else if (notes1.getNote() >= 3){
+                    }else if (note.getNote() >= 3){
                         situation = Situation.IN_RECOVERY;
                         break;
                     }
@@ -47,7 +48,7 @@ public class Menu {
                 System.out.println("Situation: " + situation.getStts());
                 System.out.println("Notes: ");
                 for (Notes note : studentNotes){
-                    System.out.println("Discipline: " + note.getDiscipline());
+                    System.out.println("Discipline: " + note.getDiscipline().getDisciplineName());
                     System.out.println("Note: " + note.getNote());
                 }
             }else {
