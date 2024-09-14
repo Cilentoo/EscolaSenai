@@ -1,15 +1,23 @@
 package com.poo.escola.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Discipline {
     private String disciplineName;
     private Notes notes;
-    private Teacher teacher;
 
-    public Discipline(String disciplineName, Notes notes, Teacher teacher) {
-        this.disciplineName = disciplineName;
-        this.notes = notes;
-        this.teacher = teacher;
+    public static List<Discipline> disciplineList = new ArrayList<Discipline>();
+
+    public static Discipline getDisciplineByName(String name) {
+        for (Discipline discipline : disciplineList) {
+            if (discipline.getDisciplineName().equals(name)) {
+                return discipline;
+            }
+        }
+        return null;
     }
+
 
     public String getDisciplineName() {
         return disciplineName;
@@ -27,20 +35,34 @@ public class Discipline {
         this.notes = notes;
     }
 
-    public Teacher getTeacher() {
-        return teacher;
+
+    public static List<Discipline> getDisciplineList(){
+        return disciplineList;
     }
 
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+    public static void showDisciplineList(){
+        if(!Discipline.disciplineList.isEmpty()){
+            System.out.println("Discipline list: ");
+            for (Discipline d : disciplineList){
+                System.out.println((disciplineList.indexOf(d))+ "- " + d.getDisciplineName());
+            }
+        }else {
+            System.out.println("There are no registered disciplines. \n");
+        }
     }
 
-    @Override
-    public String toString() {
-        return "Discipline{" +
-                "disciplineName='" + disciplineName + '\'' +
-                ", notes=" + notes +
-                ", teacher=" + teacher +
-                '}';
+
+    public static void seedDiscipline(){
+        Discipline discipline1 = new Discipline();
+        discipline1.setDisciplineName("JAVA");
+        disciplineList.add(discipline1);
+
+        Discipline discipline2 = new Discipline();
+        discipline2.setDisciplineName("LOGIC");
+        disciplineList.add(discipline2);
+
+        Discipline discipline3 = new Discipline();
+        discipline3.setDisciplineName("DBA");
+        disciplineList.add(discipline3);
     }
 }

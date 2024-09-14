@@ -1,12 +1,62 @@
 package com.poo.escola.entities;
 
+import com.poo.escola.entities.enums.Situation;
+
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
+import static com.poo.escola.entities.Student.getStudentByEmail;
+
 public class Menu {
+    private static Situation situation;
     private static String loggedUser = null;
     private static String userRole = null;
 
+    public static void printRecord(String loggedUser) {
+        Student student = getStudentByEmail(loggedUser);
+        if (student != null){
+            System.out.println("Student Record: ");
+            System.out.println("Name: " + student.getName());
+            System.out.println("Email: " + student.getMail());
+
+            Notes.loadNotesFromFile();
+
+            List<Notes> studentNotes = new ArrayList<>();
+            for(Notes notes : Notes.getNotesList()){
+                if (notes.getStudent().equals(student)){
+                    studentNotes.add(notes);
+                }
+            }
+            Notes notes1 = student.getNotes();
+            if (!studentNotes.isEmpty()){
+
+                for (Notes note : studentNotes){
+                    if (notes1.getNote() >= 6 ){
+                        situation= Situation.APPROVED;
+                        break;
+                    }else if (notes1.getNote() < 3){
+                        situation = Situation.FAILED;
+                        break;
+                    }else if (notes1.getNote() >= 3){
+                        situation = Situation.IN_RECOVERY;
+                        break;
+                    }
+                }
+                System.out.println("Situation: " + situation.getStts());
+                System.out.println("Notes: ");
+                for (Notes note : studentNotes){
+                    System.out.println("Discipline: " + note.getDiscipline());
+                    System.out.println("Note: " + note.getNote());
+                }
+            }else {
+                System.out.println("No notes found.");
+            }
+        }else {
+            System.out.println("Student not found.");
+        }
+    }
 
     public static void login() {
         Scanner sc = new Scanner(System.in);
@@ -16,19 +66,24 @@ public class Menu {
         System.out.println("Password: ");
         String password = sc.nextLine();
 
+        boolean isValidUser = false;
 
-        for(Secretary s : Secretary.getSecretary()) {
+
+        for (Secretary s : Secretary.getSecretary()) {
             if (userMail.equals(s.getMail()) && password.equals(s.getPassword())) {
                 loggedUser = userMail;
                 userRole = "Secretary";
                 System.out.println("Login sucessfully realized. (Secretary)!");
+                isValidUser = true;
+
             }
         }
-        for (Teacher t: Teacher.getTeachersList()) {
-            if (userMail.equals(t.getMail()) &&password.equals(t.getPassword())){
+        for (Teacher t : Teacher.getTeachersList()) {
+            if (userMail.equals(t.getMail()) && password.equals(t.getPassword())) {
                 loggedUser = userMail;
                 userRole = "Teacher";
                 System.out.println("Login sucessfully realized. (Teacher)!");
+                isValidUser = true;
             }
         }
 
@@ -37,14 +92,15 @@ public class Menu {
                 loggedUser = userMail;
                 userRole = "Student";
                 System.out.println("Login sucessfully realized. (Student)!");
+                isValidUser = true;
             }
         }
-        if(userMail.isEmpty() || password.isEmpty()){
-            System.out.println("Invalid User mail or password.");
-            loggedUser = null;
-            userRole = null;
+
+        if (!isValidUser){
+            System.out.println("Invalid email or password. Please try again");
+            login();
         }
-    }
+   }
 
         public static void menuFinal(){
             int optionM = 8;
@@ -60,8 +116,7 @@ public class Menu {
                     System.out.println("1- Student Menu.");
                     System.out.println("2- Teacher menu:");
                 }else if (userRole.equals("Teacher")){
-                    System.out.println("1- Print bill");
-                    System.out.println("2- Give note");
+                    System.out.println("1- Take notes");
                 } else if (userRole.equals("Student")) {
                     System.out.println("1- My bill");
                 }
@@ -77,9 +132,9 @@ public class Menu {
                             if (userRole.equals("Secretary")) {
                                 Secretary.secretaryMenuStudent();
                             }else if (userRole.equals("Teacher")){
-                                System.out.println("The bill has been printed");
+                                Teacher.takeNotes();
                             }else if (userRole.equals("Student")){
-                                System.out.println("Printing bill");
+                                Menu.printRecord(loggedUser);
                             }
                             break;
                         case 2:

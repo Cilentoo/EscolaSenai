@@ -30,17 +30,17 @@ public class Teacher extends Person {
         this.salary = salary;
     }
 
-    public static void registerTeacher(){
+    public static void registerTeacher() {
         System.out.println(" -- Registering new teacher -- ");
         System.out.println("Name: ");
         Scanner sc = new Scanner(System.in);
         String name = sc.nextLine();
-        Teacher teacher= new Teacher();
+        Teacher teacher = new Teacher();
         teacher.setName(name);
         Teacher.teachersList.add(teacher);
     }
 
-    public static void updateTeacher(){
+    public static void updateTeacher() {
         if (!Teacher.teachersList.isEmpty()) {
 
             System.out.println("Teacher list: ");
@@ -58,11 +58,12 @@ public class Teacher extends Person {
             } else {
                 System.out.println("Invalid Teacher number. \n");
             }
-        }else {
+        } else {
             System.out.println("There are no registered teachers.");
         }
     }
-    public static void removeTeacher(){
+
+    public static void removeTeacher() {
         if (!Teacher.teachersList.isEmpty()) {
 
             System.out.println("Teachers list: ");
@@ -76,27 +77,27 @@ public class Teacher extends Person {
             } else {
                 System.out.println("Invalid teacher number. \n");
             }
-        }else {
+        } else {
             System.out.println("There are no registered teachers.");
         }
     }
 
-    public static void showTeacherList(){
-        if(!Teacher.teachersList.isEmpty()){
+    public static void showTeacherList() {
+        if (!Teacher.teachersList.isEmpty()) {
             System.out.println("Teacher list: ");
-            for (Teacher t : teachersList){
-                System.out.println((teachersList.indexOf(t))+ "- " + t.getName() + " / salary: "  +
+            for (Teacher t : teachersList) {
+                System.out.println((teachersList.indexOf(t)) + "- " + t.getName() + " / salary: " +
                         t.getSalary()
                         + "/ email: " + t.getMail() + " / admission date: "
                         + t.getAdmissionDate());
             }
-        }else {
+        } else {
             System.out.println("There are no registered teacher. \n");
         }
     }
 
 
-    public static void seedTeacher(){
+    public static void seedTeacher() {
         Teacher teacher1 = new Teacher();
         teacher1.setName("Arthur");
         teacher1.setSalary(3200.00);
@@ -110,6 +111,7 @@ public class Teacher extends Person {
         teacher2.setMail("pedroG@gmail.com");
         teacher2.setAdmissionDate(new Date());
         teacher2.setPassword("PE@!1999");
+
         teachersList.add(teacher2);
 
         Teacher teacher3 = new Teacher();
@@ -127,7 +129,35 @@ public class Teacher extends Person {
         teachersList.add(teacher4);
     }
 
-    public static List<Teacher> getTeachersList(){
+    public static void takeNotes() {
+        System.out.println("Taking notes");
+        Student.showStudentList();
+        System.out.println("Enter number of the student to take notes: ");
+        Scanner sc = new Scanner(System.in);
+        int studentIndex = sc.nextInt() - 1;
+        if (studentIndex >= 0 && studentIndex <= Student.getStudentsList().size()) {
+            Discipline.showDisciplineList();
+            System.out.println("Okay, for now enter number of discipline you want to take notes: ");
+            int disciplineIndex = sc.nextInt() - 1;
+            if (disciplineIndex >= 0 && disciplineIndex <= Discipline.getDisciplineList().size()) {
+                Notes note1 = new Notes();
+                System.out.println("Qual nota do aluno: ");
+                Double takeNote1 = sc.nextDouble();
+                note1.setNote(takeNote1);
+                note1.setStudent(Student.getStudentsList().get(studentIndex));
+                note1.setDiscipline(Discipline.getDisciplineList().get(disciplineIndex));
+                Notes.notesList.add(note1);
+                Notes.saveNotesToFile();
+            }
+
+        } else {
+            System.out.println("Invalid Student number. \n");
+        }
+
+    }
+
+
+    public static List<Teacher> getTeachersList() {
         return teachersList;
     }
 }

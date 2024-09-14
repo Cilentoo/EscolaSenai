@@ -8,11 +8,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class Student extends Person {
+public class Student extends Person{
     private Date dataRegistration;
     private String course;
     private Notes notes;
-    private Situation situation;
+    private static Situation situation;
 
     public static List<Student> studentsList = new ArrayList<Student>();
 
@@ -126,7 +126,6 @@ public class Student extends Person {
     public static void seedStudent(){
         Student student1 = new Student();
         student1.setName("Luan");
-        student1.setDataRegistration(new Date());
         student1.setMail("luanG@gmail.com");
         student1.setCourse("Desenvolvimento de Software");
         student1.setPassword("Lu!1984@");
@@ -150,6 +149,15 @@ public class Student extends Person {
 
     public static List<Student> getStudentsList(){
         return studentsList;
+    }
+
+    public static Student getStudentByEmail(String email){
+        for (Student student : studentsList){
+            if (student.getMail().equals(email)){
+                return student;
+            }
+        }
+        return null;
     }
 
 }
