@@ -17,6 +17,10 @@ public class EscolaApplication {
 		Menu.menuFinal();
 
 		//na hora de escolher o indice, lembre-se numero 1 pra indice 0 e assim por diante.
+		//na hora de lançar a nota como professor va no seedTeacher pega o login que é o email,
+		//e a senha, depois pra lançar a nota passando pelos indices mande-a com virgula 9,2 por exemplo
+		//e nao 9.2 pois se nao retorna nulo.
+
 		//depois de umas 3 horas pra descobrir o erro do por que o arquivo nao era lido
 		//descobrimos que era pq chama name na gravação e na leitura chamava email
 		//porem ele nao queria ler tambem por que faltava chamar o this.notes que tava errado
